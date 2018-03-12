@@ -36,9 +36,9 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "小程序商城DEMO",
+    "navigationBarTitleText": "华侨城小程序DEMO",
     "navigationBarTextStyle":"black",
-    "enablePullDownRefresh": "true"
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "backgroundColor": "#fafafa",
