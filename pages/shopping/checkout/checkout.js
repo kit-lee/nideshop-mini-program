@@ -16,12 +16,12 @@ Page({
     orderTotalPrice: 0.00,  //订单总价
     actualPrice: 0.00,     //实际需要支付的总价
     addressId: 0,
-    couponId: 0
+    couponId: 0,
+    userId: 0
   },
   onLoad: function (options) {
 
     // 页面初始化 options为页面跳转所带来的参数
-
     try {
       var addressId = wx.getStorageSync('addressId');
       if (addressId) {
@@ -36,6 +36,13 @@ Page({
           'couponId': couponId
         });
       }
+
+      let userInfo = wx.getStorageSync('userInfo');
+      if (userInfo) {
+        this.setData({
+          'userId': userInfo.id
+        });
+      }
     } catch (e) {
       // Do something when catch error
     }
@@ -43,8 +50,9 @@ Page({
 
   },
   getCheckoutInfo: function () {
+    console.info(this.data.addressId);
     let that = this;
-    util.request(api.CartCheckout, { addressId: that.data.addressId, couponId: that.data.couponId }).then(function (res) {
+    util.request(api.CartCheckout, { addressId: that.data.addressId, couponId: that.data.couponId, userId: that.data.userId}).then(function (res) {
       if (res.errno === 0) {
         console.log(res.data);
         that.setData({

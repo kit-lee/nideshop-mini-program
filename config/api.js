@@ -1,7 +1,11 @@
-var NewApiRootUrl = 'https://mini.91zmt.com/api/';
+var ApiRootUrl = 'https://mini.91zmt.com/api/';
 
 module.exports = {
-IndexUrl: ApiRootUrl + 'index/index', //首页数据接口
+  AppId: 'wxmp_TG8VpiJF',
+  AppName: '华侨城小程序Demo', //App标题
+  shareDesc: '华侨城甘坑小镇文创产品微商城', //分享小程序时的描述
+  platformUserId: 40,
+  IndexUrl: ApiRootUrl + 'index/index', //首页数据接口
   CatalogList: ApiRootUrl + 'catalog/index',  //分类目录全部分类数据接口
   CatalogCurrent: ApiRootUrl + 'catalog/current',  //分类目录当前分类数据接口
 

@@ -29,7 +29,9 @@ function request(url, data = {}, method = "GET") {
       method: method,
       header: {
         'Content-Type': 'application/json',
-        'X-Nideshop-Token': wx.getStorageSync('token')
+        'X-Nideshop-Token': wx.getStorageSync('token'),
+        'Muses-Platform-Userid': api.platformUserId,
+        'Muses-Appid': api.AppId
       },
       success: function (res) {
         console.log("success");
