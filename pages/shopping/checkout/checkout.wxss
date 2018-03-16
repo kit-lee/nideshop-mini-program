@@ -187,7 +187,7 @@ page{
     overflow: hidden;
     background: #fff;
     padding-left: 31.25rpx;
-    margin-bottom: 120rpx;
+    margin-bottom: 20rpx;
 }
 
 .goods-items .item{
@@ -292,4 +292,22 @@ page{
     text-align: center;
     color: #fff;
     font-size: 30rpx;
+}
+
+.postscript {
+    margin-top: 20rpx;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background: #fff;
+    padding: 15rpx 31.25rpx;
+    margin-bottom: 120rpx;
+}
+
+.postscript>textarea {
+    margin-top: 30rpx; 
+    border: 1rpx solid #ddd; 
+    width: 100%;
+    margin-bottom: 30rpx; 
+    height: 100rpx;
 }

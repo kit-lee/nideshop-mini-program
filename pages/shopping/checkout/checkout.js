@@ -17,7 +17,13 @@ Page({
     actualPrice: 0.00,     //实际需要支付的总价
     addressId: 0,
     couponId: 0,
-    userId: 0
+    userId: 0,
+    postscript: ''
+  },
+  bindTextAreaInput: function (e) {
+    this.setData({
+      postscript: e.detail.value
+    })
   },
   onLoad: function (options) {
 
@@ -50,7 +56,6 @@ Page({
 
   },
   getCheckoutInfo: function () {
-    console.info(this.data.addressId);
     let that = this;
     util.request(api.CartCheckout, { addressId: that.data.addressId, couponId: that.data.couponId, userId: that.data.userId}).then(function (res) {
       if (res.errno === 0) {
@@ -105,7 +110,8 @@ Page({
       util.showErrorToast('请选择收货地址');
       return false;
     }
-    util.request(api.OrderSubmit, { addressId: this.data.addressId, couponId: this.data.couponId }, 'POST').then(res => {
+    return;
+    util.request(api.OrderSubmit, { addressId: this.data.addressId, couponId: this.data.couponId, postscript: this.data.postscript}, 'POST').then(res => {
       if (res.errno === 0) {
         const orderId = res.data.orderInfo.id;
         pay.payOrder(parseInt(orderId)).then(res => {

@@ -77,6 +77,11 @@
             </view>
         </view>
     </view>
+    
+    <view class="postscript">
+        <text>留言</text>
+        <textarea bindinput="bindTextAreaInput" maxlength="150" placeholder="给商户留言" value="{{postscript}}"/>
+    </view>
 
     <view class="order-total">
         <view class="l">实付：￥{{actualPrice}}</view>
