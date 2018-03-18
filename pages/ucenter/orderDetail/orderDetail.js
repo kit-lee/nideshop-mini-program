@@ -57,9 +57,20 @@ Page({
           'signType': payParam.signType,
           'paySign': payParam.paySign,
           'success': function (res) {
+            wx.navigateBack({
+              success: function(){
+                wx.showToast({
+                  title: '支付成功',
+                  icon: 'success'
+                });
+              }
+            });
             console.log(res)
           },
           'fail': function (res) {
+            wx.showToast({
+              title: '支付失败'
+            })
             console.log(res)
           }
         });

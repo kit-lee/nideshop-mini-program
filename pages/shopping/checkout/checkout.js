@@ -110,7 +110,7 @@ Page({
       util.showErrorToast('请选择收货地址');
       return false;
     }
-    return;
+    
     util.request(api.OrderSubmit, { addressId: this.data.addressId, couponId: this.data.couponId, postscript: this.data.postscript}, 'POST').then(res => {
       if (res.errno === 0) {
         const orderId = res.data.orderInfo.id;
