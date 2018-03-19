@@ -42,10 +42,11 @@ Page({
 
     }
 
+    wx.navigateBack()
     //选择该收货地址
-    wx.redirectTo({
+    /*wx.redirectTo({
       url: '/pages/shopping/checkout/checkout'
-    })
+    })*/
   },
   onHide: function () {
     // 页面隐藏
