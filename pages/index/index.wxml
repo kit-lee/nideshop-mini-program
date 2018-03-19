@@ -15,11 +15,11 @@
     </navigator>
   </view>
   <view class="a-section a-brand">
-    <view class="h">
-      <navigator url="../brand/brand">
-        <text class="txt">小凉帽直供</text>
-      </navigator>
-    </view>
+    <navigator url="../brand/brand">
+      <view class="h">
+        <text class="txt">特色商户</text>
+      </view>
+    </navigator>
     <view class="b">
       <view class="item item-1" wx:for="{{brand}}" wx:key="item.id">
         <navigator url="/pages/brandDetail/brandDetail?id={{item.id}}">
@@ -36,13 +36,11 @@
     </view>
   </view>
   <view class="a-section a-new" wx:if="{{newGoods.length > 0}}">
-    <view class="h">
-      <view>
-        <navigator url="../newGoods/newGoods">
-          <text class="txt">周一周四 · 新品首发</text>
-        </navigator>
+    <navigator url="../newGoods/newGoods">
+      <view class="h">
+        <text class="txt">特色线路</text>
       </view>
-    </view>
+    </navigator>
     <view class="b">
       <view class="item" wx:for="{{newGoods}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">
         <navigator url="../goods/goods?id={{item.id}}">

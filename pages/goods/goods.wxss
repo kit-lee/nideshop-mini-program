@@ -709,4 +709,13 @@
     line-height: 65rpx;
 }
 
-
+.addToCart {
+    border:1px solid #b4282d;
+    background: #b4282d;
+    height: 100rpx;
+    line-height: 96rpx;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    margin-top: 200rpx;
+}

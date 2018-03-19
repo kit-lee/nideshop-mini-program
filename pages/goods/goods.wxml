@@ -138,8 +138,9 @@
         </view>
       </view>
     </view>
+    <view class="addToCart" bindtap="addToCart">确定</view>
   </view>
-  <view class="bottom-btn">
+  <view class="bottom-btn" wx:if="{{!openAttr}}">
     <view class="l l-collect {{ openAttr ? 'back' : ''}}" bindtap="closeAttrOrCollect">
       <image class="icon" src="{{ collectBackImage }}"></image>
     </view>
@@ -150,8 +151,7 @@
 
       </view>
     </view>
-    <view class="c" wx:if="{{!openAttr}}">立即购买</view>
-    <view class="r" wx:if="{{!openAttr}}" bindtap="addToCart">加入购物车</view>
-    <view class="r" wx:if="{{openAttr}}" bindtap="addToCart">确定</view>
+    <view class="c">立即购买</view>
+    <view class="r" bindtap="addToCart">加入购物车</view>
   </view>
 </scroll-view>
