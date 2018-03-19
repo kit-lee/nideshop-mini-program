@@ -9,11 +9,14 @@ Page({
     handleOption: {}
   },
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
       orderId: options.id
     });
-    this.getOrderDetail();
+    this.getOrderDetail()
   },
   getOrderDetail() {
     let that = this;
@@ -28,6 +31,7 @@ Page({
           handleOption: res.data.handleOption
         });
         //that.payTimer();
+        wx.hideLoading()
       }
     });
   },
