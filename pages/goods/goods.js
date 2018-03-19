@@ -274,7 +274,9 @@ Page({
         collectBackImage: "/static/images/detail_back.png"
       });
     } else {
-
+      wx.showLoading({
+        title: '正在添加到购物车',
+      })
       //提示选择完整规格
       if (!this.isCheckedAllSpec()) {
         return false;
@@ -297,6 +299,7 @@ Page({
       util.request(api.CartAdd, { goodsId: this.data.goods.id, number: this.data.number, productId: checkedProduct[0].id }, "POST")
         .then(function (res) {
           let _res = res;
+          wx.hideLoading();
           if (_res.errno == 0) {
             wx.showToast({
               title: '添加成功'
