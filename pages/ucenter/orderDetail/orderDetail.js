@@ -82,6 +82,30 @@ Page({
     });
 
   },
+  cancelOrder: function(){
+    wx.showLoading({
+      title: '订单取消中',
+    })
+    util.request(api.OrderCancel, {orderId: this.data.orderId})
+      .then(function(res){
+        wx.hideLoading()
+        if (res.errno === 0) {
+          wx.setStorageSync('reloadOrder', 1);
+          if(res.data.result === true){
+            wx.navigateBack()
+          }else{
+            wx.showToast({
+              title: '没有找到订单',
+            })
+            wx.navigateBack()
+          }
+        }else{
+          wx.showToast({
+            title: '订单无法取消',
+          })
+        }
+    })
+  },
   onReady: function () {
     // 页面渲染完成
   },

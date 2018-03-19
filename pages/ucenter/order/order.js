@@ -6,8 +6,7 @@ Page({
     orderList: []
   },
   onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
-
+    // 加载订单
     this.getOrderList();
   },
   getOrderList(){
@@ -33,6 +32,11 @@ Page({
   },
   onShow:function(){
     // 页面显示
+    const flag = wx.getStorageSync('reloadOrder');
+    if(flag!==undefined && flag===1){
+      wx.setStorageSync('reloadOrder', 0);
+      this.getOrderList()
+    }
   },
   onHide:function(){
     // 页面隐藏
