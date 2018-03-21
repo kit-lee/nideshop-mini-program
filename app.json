@@ -30,13 +30,14 @@
     "pages/shopping/checkout/checkout",
     "pages/shopping/address/address",
     "pages/shopping/addressAdd/addressAdd",
+    "pages/shopping/buyNow/buyNow",
     "pages/goods/goods",
     "pages/topicDetail/topicDetail"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "华侨城小程序DEMO",
+    "navigationBarTitleText": "甘坑小镇",
     "navigationBarTextStyle":"black",
     "enablePullDownRefresh": true
   },

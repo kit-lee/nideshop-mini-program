@@ -2,8 +2,8 @@ var ApiRootUrl = 'https://mini.91zmt.com/api/';
 
 module.exports = {
   AppId: 'wxmp_TG8VpiJF',
-  AppName: '华侨城小程序Demo', //App标题
-  shareDesc: '华侨城甘坑小镇文创产品微商城', //分享小程序时的描述
+  AppName: '甘坑小镇', //App标题
+  shareDesc: '甘坑小镇文创产品微商城', //分享小程序时的描述
   platformUserId: 40,
   IndexUrl: ApiRootUrl + 'index/index', //首页数据接口
   CatalogList: ApiRootUrl + 'catalog/index',  //分类目录全部分类数据接口
@@ -29,8 +29,10 @@ module.exports = {
   CartChecked: ApiRootUrl + 'cart/checked', // 选择或取消选择商品
   CartGoodsCount: ApiRootUrl + 'cart/goodscount', // 获取购物车商品件数
   CartCheckout: ApiRootUrl + 'cart/checkout', // 下单前信息确认
+  BuyNow: ApiRootUrl + 'cart/buynow', //立刻购买
 
   OrderSubmit: ApiRootUrl + 'order/submit', // 提交订单
+  BuyNowOrder: ApiRootUrl + 'order/buynow', // 提交立刻购买的订单
   PayPrepayId: ApiRootUrl + 'pay/prepay', //获取微信统一下单prepay_id
 
   CollectList: ApiRootUrl + 'collect/list',  //收藏列表

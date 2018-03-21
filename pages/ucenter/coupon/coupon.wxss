@@ -48,6 +48,7 @@ page{
   right: 30rpx;
   width: 28rpx;
   height: 28rpx;
+  z-index:10;
 }
 
 .add-btn{

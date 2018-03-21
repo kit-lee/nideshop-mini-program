@@ -22,7 +22,8 @@ Page({
     openAttr: false,
     noCollectImage: "/static/images/icon_collect.png",
     hasCollectImage: "/static/images/icon_collect_checked.png",
-    collectBackImage: "/static/images/icon_collect.png"
+    collectBackImage: "/static/images/icon_collect.png",
+    buyNow: false
   },
   getGoodsInfo: function () {
     let that = this;
@@ -213,7 +214,16 @@ Page({
     if (this.data.openAttr == false) {
       this.setData({
         openAttr: !this.data.openAttr,
-        collectBackImage: "/static/images/detail_back.png"
+        collectBackImage: "/static/images/detail_back.png",
+        buyNow: true
+      });
+    }
+  },
+  closeSpec: function(){
+    if (this.data.openAttr == true) {
+      this.setData({
+        openAttr: !this.data.openAttr,
+        buyNow: false
       });
     }
   },
@@ -274,18 +284,30 @@ Page({
         collectBackImage: "/static/images/detail_back.png"
       });
     } else {
+      const loadTitle = this.data.buyNow == true ? '订单生成中' : '正在添加到购物车'
       wx.showLoading({
-        title: '正在添加到购物车',
+        title: loadTitle,
       })
       //提示选择完整规格
       if (!this.isCheckedAllSpec()) {
+        wx.hideLoading();
+        wx.showToast({
+          title: '请选择完整规格',
+          image: '/static/images/icon_error.png'
+        })
         return false;
       }
 
       //根据选中的规格，判断是否有对应的sku信息
       let checkedProduct = this.getCheckedProductItem(this.getCheckedSpecKey());
       if (!checkedProduct || checkedProduct.length <= 0) {
+        console.info(this.getCheckedSpecKey());
         //找不到对应的product信息，提示没有库存
+        wx.hideLoading();
+        wx.showToast({
+          title: '商品没库存了',
+          image: '/static/images/icon_error.png'
+        })
         return false;
       }
 
@@ -295,8 +317,17 @@ Page({
         return false;
       }
 
+      // 如果是立刻购买，马上到下单页面
+      if (that.data.buyNow == true) {
+        wx.navigateTo({
+          url: '../shopping/buyNow/buyNow?id=' + this.data.id + 
+          '&specKey=' + this.getCheckedSpecKey() + '&number=' + this.data.number
+        })
+        return
+      }
+
       //添加到购物车
-      util.request(api.CartAdd, { goodsId: this.data.goods.id, number: this.data.number, productId: checkedProduct[0].id }, "POST")
+      util.request(api.CartAdd, { goodsId: this.data.goods.id, number: this.data.number, productId: checkedProduct[0].id, buyNow: this.data.buyNow}, "POST")
         .then(function (res) {
           let _res = res;
           wx.hideLoading();

@@ -7,7 +7,7 @@ var app = getApp();
 
 Page({
   data: {
-
+    exchangeCode: ''
   },
   onLoad: function (options) {
   },
@@ -23,5 +23,10 @@ Page({
   },
   onUnload: function () {
     // 页面关闭
+  },
+  clearExchange: function(){
+    this.setData({
+      exchangeCode: ''
+    })
   }
 })
