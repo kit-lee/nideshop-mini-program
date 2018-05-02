@@ -1,6 +1,8 @@
-var app = getApp();
 var util = require('../../utils/util.js');
 var api = require('../../config/api.js');
+const pay = require('../../services/pay.js');
+
+var app = getApp();
 
 Page({
   data: {
@@ -30,32 +32,19 @@ Page({
 
   },
   //向服务请求支付参数
-  requestPayParam() {
-    let that = this;
-    util.request(api.PayPrepayId, { orderId: that.data.orderId, payType: 1 }).then(function (res) {
-      if (res.errno === 0) {
-        let payParam = res.data;
-        wx.requestPayment({
-          'timeStamp': payParam.timeStamp,
-          'nonceStr': payParam.timeStamp,
-          'package': payParam.nonceStr,
-          'signType': payParam.signType,
-          'paySign': payParam.paySign,
-          'success': function (res) {
-            wx.redirectTo({
-              url: '/pages/payResult/payResult?status=true',
-            })
-          },
-          'fail': function (res) {
-            wx.redirectTo({
-              url: '/pages/payResult/payResult?status=false',
-            })
-          }
-        })
-      }
+  requestPayParam: function() {
+    const orderId = this.data.orderId;
+    pay.payOrder(parseInt(orderId)).then(res => {
+      wx.redirectTo({
+        url: '/pages/payResult/payResult?status=1&orderId=' + orderId
+      });
+    }).catch(res => {
+      wx.redirectTo({
+        url: '/pages/payResult/payResult?status=0&orderId=' + orderId
+      });
     });
   },
-  startPay() {
+  startPay: function() {
     this.requestPayParam();
   }
 })
