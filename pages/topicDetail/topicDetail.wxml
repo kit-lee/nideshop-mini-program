@@ -3,6 +3,13 @@
     <import src="../../lib/wxParse/wxParse.wxml"/> 
     <template is="wxParse" data="{{wxParseData:topicDetail.nodes}}"/>
   </scroll-view>
+  <view class="a-section a-brand" wx:if="{{topic.brand_id != 0}}">
+    <navigator url="../brandDetail/brandDetail?id={{topic.brand_id}}">
+      <view class="h">
+        <text class="txt">进入</text>
+      </view>
+    </navigator>
+  </view>
   <view class="topic-goods">
   </view>
   <scroll-view class="comments">
