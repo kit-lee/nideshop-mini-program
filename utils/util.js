@@ -1,4 +1,4 @@
-var api = require('../config/api.js');
+var api = require('../config/api.js')
 
 function formatTime(date) {
   var year = date.getFullYear()
@@ -52,7 +52,7 @@ function request(url, data = {}, method = "GET") {
                   //存储用户信息
                   wx.setStorageSync('userInfo', res.data.userInfo);
                   wx.setStorageSync('token', res.data.token);
-                  
+
                   resolve(res);
                 } else {
                   reject(res);
@@ -79,6 +79,14 @@ function request(url, data = {}, method = "GET") {
   });
 }
 
+function get(url, data = {}) {
+  return request(url, data, 'GET')
+}
+
+function post(url, data = {}) {
+  return request(url, data, 'POST')
+}
+
 /**
  * 检查微信会话是否过期
  */
@@ -103,9 +111,7 @@ function login() {
     wx.login({
       success: function (res) {
         if (res.code) {
-          //登录远程服务器
-          console.log(res)
-          resolve(res);
+          resolve(res.code);
         } else {
           reject(res);
         }
@@ -122,8 +128,11 @@ function getUserInfo() {
     wx.getUserInfo({
       withCredentials: true,
       success: function (res) {
-        console.log(res)
-        resolve(res);
+        if (res.detail.errMsg === 'getUserInfo:ok') {
+          resolve(res);
+        } else {
+          reject(res)
+        }
       },
       fail: function (err) {
         reject(err);
@@ -157,6 +166,8 @@ function showErrorToast(msg) {
 module.exports = {
   formatTime,
   request,
+  get,
+  post,
   redirect,
   showErrorToast,
   checkSession,

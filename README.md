@@ -10,6 +10,8 @@
 
 本项目需要配合NideShop商城服务端使用，GitHub: [https://github.com/tumobi/nideshop](https://github.com/tumobi/nideshop)
 
+[云服务器ECS-云主机优惠-2折上云](https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=3grpysgf)
+
 ### 项目截图
 
 ![首页](http://upload-images.jianshu.io/upload_images/3985656-c543b937ac6e79bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
@@ -86,7 +88,7 @@
 ### 服务端api
 项目地址：https://github.com/tumobi/nideshop
 
-### 最后
-喜欢别忘了Star
-本项目长期更新完善，欢迎Watch
-交流QQ群：497145766
+### 交流
+喜欢别忘了 Star，有问题可通过微信、公众号、QQ 群联系我，谢谢您的关注。
+
+![联系方式](http://nideshop-static.childsay.com/nideshop-qrcode.png)
